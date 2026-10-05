@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Aya | Cybersecurity Engineering Student</title>
-<meta name="description" content="Portfolio of Aya, cybersecurity engineering student at ENSIAS: honeypots, secure access, CTF platforms and post-quantum cryptography.">
+<meta name="description" content="Portfolio of Aya, cybersecurity engineering student at ENSIAS: application security, honeypots, secure access and intrusion detection.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -31,7 +31,7 @@ header.bar{position:sticky;top:0;z-index:5;background:rgba(246,241,252,.94);back
 .btn{display:inline-block;padding:.65rem 1.2rem;border-radius:8px;font-weight:600;text-decoration:none;border:2px solid var(--ink);color:var(--ink)}
 .btn.main{background:var(--ink);color:#fff}
 .btn:hover{background:var(--blue);border-color:var(--blue);color:#fff}
-.term{background:var(--ink);color:#EBDDFB;border-radius:12px;font:400 .88rem/1.55 var(--mono);box-shadow:0 18px 40px -18px rgba(42,22,70,.6),0 0 70px rgba(255,138,208,.3),0 0 70px rgba(255,138,208,.3),0 0 70px rgba(255,138,208,.3),0 0 70px rgba(255,138,208,.3),0 0 70px rgba(255,138,208,.3),0 0 70px rgba(255,138,208,.3),0 0 70px rgba(255,138,208,.3);overflow:hidden}
+.term{background:var(--ink);color:#EBDDFB;border-radius:12px;font:400 .88rem/1.55 var(--mono);box-shadow:0 18px 40px -18px rgba(42,22,70,.6),0 0 70px rgba(255,138,208,.3);overflow:hidden}
 .term .top{display:flex;justify-content:space-between;padding:.55rem .9rem;background:#1B0D30;color:#A996C8;font-size:.78rem}
 #out{height:19rem;overflow-y:auto;padding:.8rem .9rem;white-space:pre-wrap;word-break:break-word}
 #out .p{color:var(--amber)} #out .ok{color:var(--teal)} #out .dim{color:#A996C8}
@@ -89,7 +89,7 @@ footer{padding:2rem 0 3rem;border-top:1px solid var(--line);color:var(--muted);f
 <div class="hero">
   <div>
     <h1>Hi, I'm Aya.</h1>
-    <p>I'm a cybersecurity engineering student. I learn how attackers break into systems so I can help organizations stop them.</p>
+    <p>I'm a cybersecurity engineering student at ENSIAS. I learn how attackers break into systems so I can help organizations stop them.</p>
     <p>Looking for a final-year (PFE) internship of up to 5 months, starting February 2027. Not sure what a term means? Switch to <b>Plain English</b> at the top, or tap any skill below.</p>
     <div class="btns"><a class="btn main" href="#projects">See my projects</a><a class="btn" href="#contact">Get in touch</a></div>
   </div>
@@ -97,37 +97,43 @@ footer{padding:2rem 0 3rem;border-top:1px solid var(--line);color:var(--muted);f
     <div class="top"><span>aya@portfolio</span><span>try the buttons, or type a command</span></div>
     <div id="out" aria-live="polite"></div>
     <form id="f" autocomplete="off"><label for="cmd">$</label><input id="cmd" spellcheck="false" autocapitalize="off" aria-label="Terminal command"></form>
-        <div class="flagbar"><span>🚩 <b>Hidden flag challenge:</b> can you capture it?</span><button type="button" id="flaghint">Hint</button></div>
+    <div class="flagbar"><span>🚩 <b>Hidden flag challenge:</b> can you capture it?</span><button type="button" id="flaghint">Hint</button></div>
   </div>
 </div>
 
 <section id="projects">
   <h2>Projects</h2>
-  <p class="lead">Internships and hands-on projects, from airport application security to honeypots and cryptography. Each one shows a different side of security.</p>
+  <p class="lead">Internships and hands-on projects, from airport application security to honeypots and intrusion detection. Each one shows a different side of security.</p>
   <div class="grid">
-    <article class="card" data-skills="SAST/DAST,OWASP Top 10">
+    <article class="card" data-skills="SAST/DAST,OWASP Top 10,Threat modeling,SonarQube,Burp Suite,OWASP ZAP">
       <h3>Application security internship at ONDA</h3>
-      <p class="plain">At Morocco's airports authority (July to August 2026), I checked the web application behind the airport's Security Management System for weaknesses and told the team which to fix first.</p>
-      <p class="tech">Integrated security practices into the web app, ran SAST/DAST analyses with manual validation of vulnerabilities, and prioritized risks with the OWASP Top 10 and remediation recommendations.</p>
-      <p class="tools">SAST · DAST · OWASP Top 10</p>
+      <p class="plain">At Morocco's airports authority (July to August 2026), I checked the web application behind the airport's Security Management System for weaknesses, on a safe test copy, and told the team which to fix first.</p>
+      <p class="tech">Audited a PHP/MariaDB web application: STRIDE threat modeling, SAST (PHPStan, SonarQube, Semgrep), DAST (Burp Suite, OWASP ZAP), manual validation of findings, OWASP Top 10 risk prioritization and remediation recommendations. Tested on an isolated sandbox with fictitious data.</p>
+      <p class="tools">STRIDE · SAST · DAST · Burp · ZAP</p>
     </article>
-    <article class="card" data-skills="Honeypots,Python,scikit-learn,ELK Stack,VirtualBox">
-      <h3>Intelligent honeypot</h3>
-      <p class="plain">I built a decoy system that looks like a real, vulnerable server. When attackers try to break in, it records what they do, and my analysis spots patterns in their behavior.</p>
-      <p class="tech">Deployed Cowrie and Dionaea honeypots in a VirtualBox lab, centralized logs in an ELK Stack, and analyzed attack data with Python and scikit-learn.</p>
-      <p class="tools">Cowrie · Dionaea · ELK · Python · scikit-learn</p>
-    </article>
-    <article class="card" data-skills="YARA,Python,CI/CD">
-      <h3>OWASP Juice Shop hardening</h3>
-      <p class="plain">Juice Shop is a deliberately vulnerable web shop used for training. I secured it and added automatic checks that flag problems whenever the code changes.</p>
-      <p class="tech">Wrote YARA rules and a Python scanner integrated into a CI/CD pipeline (DevSecOps approach).</p>
-      <p class="tools">YARA · Python · CI/CD</p>
-    </article>  
     <article class="card" data-skills="Bastion host,Bash">
       <h3>Secure access gateway at TGR</h3>
-      <p class="plain">At Morocco's national treasury (internship), I set up one tightly controlled doorway that administrators use to reach internal servers, instead of connecting to each one directly.</p>
-      <p class="tech">Deployed Apache Guacamole as a secure administration bastion and wrote MyBastion, an internal Bash tool.</p>
-      <p class="tools">Apache Guacamole · Bash</p>
+      <p class="plain">At Morocco's national treasury (internship), I compared access-control products and set up one tightly controlled doorway that administrators use to reach internal servers, instead of connecting to each one directly.</p>
+      <p class="tech">Benchmarked PAM solutions, deployed Apache Guacamole as a secure administration bastion, and wrote MyBastion, an internal Bash tool: SSH bastion with password + TOTP authentication, role-based menus, ACL checks, replayable session recordings and audit logs.</p>
+      <p class="tools">PAM · Apache Guacamole · Bash</p>
+    </article>
+    <article class="card" data-skills="Random Forest">
+      <h3>Cloud VM security analysis</h3>
+      <p class="plain">I simulated attacks against virtual machines in the cloud and trained a model on a public dataset to recognize intrusions automatically.</p>
+      <p class="tech">Simulated attacks on cloud VMs, then trained and evaluated a Random Forest on the CICIDS2017 dataset (precision, recall, F1) for intrusion detection. Wazuh/Kibana integration designed as a next step.</p>
+      <p class="tools">Random Forest · CICIDS2017</p>
+    </article>
+    <article class="card" data-skills="Honeypots,ELK Stack,VirtualBox,Kali Linux">
+      <h3>Honeypot lab</h3>
+      <p class="plain">I built decoy systems that look like real, vulnerable servers. When simulated attackers try to break in, they record what the attackers do, and I study it in a dashboard.</p>
+      <p class="tech">Deployed Cowrie and Dionaea honeypots on an isolated virtual network (honeypot, Kali attacker and ELK supervision VMs), simulated attacks with Nmap, Hydra and Metasploit, and analyzed the logs in Kibana with GeoIP enrichment.</p>
+      <p class="tools">Cowrie · Dionaea · ELK · Kali</p>
+    </article>
+    <article class="card" data-skills="YARA,Python,CI/CD">
+      <h3>OWASP Juice Shop: YARA code scanner</h3>
+      <p class="plain">Juice Shop is a deliberately vulnerable web shop used for training. In a team project, we built rules and a scanner that flag risky code, and a pipeline that runs these checks automatically.</p>
+      <p class="tech">Team project (DevSecOps approach): I wrote the YARA rules and a Python scanner that recursively analyzes the app's code for patterns such as hardcoded secrets, injections and eval(), and the scanner was integrated into a CI/CD pipeline.</p>
+      <p class="tools">YARA · Python · CI/CD</p>
     </article>
     <article class="card" data-skills="Android,Firebase">
       <h3>SafeHer, a secure mobile app</h3>
@@ -135,23 +141,11 @@ footer{padding:2rem 0 3rem;border-top:1px solid var(--line);color:var(--muted);f
       <p class="tech">Android development with Firebase, access control, certificate pinning and application-level protections.</p>
       <p class="tools">Android · Firebase</p>
     </article>
-    <article class="card" data-skills="Random Forest">
-      <h3>Cloud VM security analysis</h3>
-      <p class="plain">I simulated attacks against virtual machines in the cloud and used a model to recognize the intrusions automatically.</p>
-      <p class="tech">Simulated attacks on cloud VMs and detected intrusions with a Random Forest model.</p>
-      <p class="tools">Random Forest · Cloud VMs</p>
-    </article>
-    <article class="card" data-skills="Python,Flask">
+    <article class="card" data-skills="">
       <h3>Capture-the-flag platform</h3>
-      <p class="plain">A website where students practice hacking skills legally by solving security puzzles, a bit like a game with levels and a scoreboard.</p>
-      <p class="tech">CTF platform developed in Python with Flask.</p>
-      <p class="tools">Python · Flask</p>
-    </article>
-    <article class="card" data-skills="Post-quantum crypto">
-      <h3>Post-quantum cryptography guide</h3>
-      <p class="plain">Future quantum computers could break today's encryption. I wrote a study guide on one of the new standards built to resist them.</p>
-      <p class="tech">In-depth course resource on Kyber / ML-KEM, the NIST-standardized post-quantum key encapsulation mechanism.</p>
-      <p class="tools">Kyber · ML-KEM</p>
+      <p class="plain">A team project: a website where students practice hacking skills legally by solving security puzzles, a bit like a game with levels and a scoreboard.</p>
+      <p class="tech">Team project: a CTF platform for security training, with challenges, flags and a scoreboard.</p>
+      <p class="tools">Team project · CTF</p>
     </article>
   </div>
 </section>
@@ -177,7 +171,6 @@ footer{padding:2rem 0 3rem;border-top:1px solid var(--line);color:var(--muted);f
   <h2>Let's talk</h2>
   <p class="lead">The quickest way to reach me is email or LinkedIn.</p>
   <div class="btns">
-    <!-- TODO: replace the two placeholder links below -->
     <a class="btn main" href="mailto:ayaa.bouknana@gmail.com">Email me</a>
     <a class="btn" href="https://www.linkedin.com/in/aya-bouknana-0aa1b931a/" rel="noopener">LinkedIn</a>
     <a class="btn" href="https://github.com/AyaHub05" rel="noopener">GitHub</a>
@@ -206,7 +199,7 @@ document.querySelectorAll('.mode button').forEach(b=>b.onclick=()=>{
   document.querySelectorAll('.mode button').forEach(x=>x.setAttribute('aria-pressed',x===b));
 });
 
-/* Skills: name -> [group, plain meaning] */
+/* Skills: name -> plain meaning */
 const SK={
  'Security tools':{
   'Pentesting':'Legally attacking a system to find weaknesses before real attackers do.',
@@ -219,16 +212,11 @@ const SK={
   'YARA':'Rules that detect suspicious or malicious files by their patterns.',
   'Threat modeling':'Thinking through how an attacker could target a system (STRIDE, MITRE ATT&CK).',
   'Honeypots':'A decoy system that attracts attackers so defenders can study how they work.',
-  'Wazuh':'A monitoring platform that watches computers for suspicious activity and raises alerts.',
-  'BeyondTrust':'Software that controls and records who gets administrator-level access.',
-  'Bastion host':'A single, hardened entry point for reaching sensitive servers.',
-  'Post-quantum crypto':'Encryption designed to stay safe even against future quantum computers.'},
+  'Bastion host':'A single, hardened entry point for reaching sensitive servers.'},
  'Code and data':{
   'CI/CD':'An automatic pipeline that tests and ships code, here with security checks built in.',
   'Random Forest':'A machine-learning method, used here to detect intrusions.',
   'Python':'A popular programming language, used here for automation and data analysis.',
-  'Flask':'A Python toolkit for building websites.',
-  'scikit-learn':'A machine-learning library, used to find patterns in data.',
   'Bash':'Command-line scripting for automating tasks on servers.',
   'ELK Stack':'A set of tools to collect, search and visualize huge volumes of logs.',
   'SonarQube':'Scans source code for bugs and security weaknesses.'},
@@ -266,10 +254,10 @@ function pick(b,k,v){
 const sh=t=>`<button type="button" data-c="${t}">${t}</button>`;
 const C={
  help:()=>`Commands: ${['about','projects','skills','contact','ls','clear'].map(sh).join('')}`,
- about:()=>`Aya, 3rd-year cybersecurity engineering student at ENSIAS (Rabat).\nI build honeypots, secure access tools and CTF platforms.`,
+ about:()=>`Aya, 3rd-year cybersecurity engineering student at ENSIAS (Rabat).\nI audit applications, build honeypots and secure access tools.`,
  whoami:()=>C.about(),
- projects:()=>`1. Intelligent honeypot\n2. Secure access gateway (TGR)\n3. Capture-the-flag platform\n4. Post-quantum crypto guide\n<span class="dim">Scroll down for details.</span> ${sh('go projects')}`,
- skills:()=>`Python, Flask, scikit-learn, ELK, Wazuh, AWS, Docker, CCNA...\n${sh('go skills')}`,
+ projects:()=>`1. Application security audit (ONDA)\n2. Secure access gateway (TGR)\n3. Cloud VM security analysis\n4. Honeypot lab\n5. Juice Shop YARA scanner\n6. SafeHer mobile app\n7. CTF platform (team project)\n<span class="dim">Scroll down for details.</span> ${sh('go projects')}`,
+ skills:()=>`Burp, ZAP, SAST/DAST, ELK, Python, Bash, AWS, Docker, CCNA...\n${sh('go skills')}`,
  contact:()=>`${sh('go contact')} Email, LinkedIn and GitHub are below.`,
  ls:()=>`about.txt  projects/  skills/  contact.txt  flag.txt`,
  'cat flag.txt':()=>`Permission denied. Only root can read this file.`,
@@ -297,7 +285,7 @@ let h=0;
 $('#flaghint').onclick=()=>{print(`<span class="p">$</span> hint`);print(hints[Math.min(h++,hints.length-1)],'dim')};
 
 /* One orchestrated moment: the intro types itself */
-const intro=[['whoami',C.about()],['ls projects/','Honeypot  Bastion  CTF-platform  PQC-guide'],['help',C.help()]];
+const intro=[['whoami',C.about()],['ls projects/','ONDA-audit  TGR-bastion  Cloud-VM  Honeypot  Juice-Shop  SafeHer  CTF'],['help',C.help()]];
 let i=0;
 (function next(){
   if(i>=intro.length)return;
