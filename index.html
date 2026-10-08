@@ -78,7 +78,7 @@ footer{padding:2rem 0 3rem;border-top:1px solid var(--line);color:var(--muted);f
 <body data-mode="plain">
 <header class="bar"><div class="wrap">
   <strong>Aya</strong>
-  <nav aria-label="Sections"><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#beyond">Beyond code</a><a href="#contact">Contact</a></nav>
+  <nav aria-label="Sections"><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#beyond">Beyond code</a><a href="#cv">CV</a>><a href="#contact">Contact</a></nav>
   <div class="mode" role="group" aria-label="Reading mode">
     <button type="button" data-mode="plain" aria-pressed="true">Plain English</button>
     <button type="button" data-mode="tech" aria-pressed="false">Technical</button>
@@ -91,7 +91,7 @@ footer{padding:2rem 0 3rem;border-top:1px solid var(--line);color:var(--muted);f
     <h1>Hi, I'm Aya.</h1>
     <p>I'm a cybersecurity engineering student at ENSIAS. I learn how attackers break into systems so I can help organizations stop them.</p>
     <p>Looking for a final-year (PFE) internship of up to 5 months, starting February 2027. Not sure what a term means? Switch to <b>Plain English</b> at the top, or tap any skill below.</p>
-    <div class="btns"><a class="btn main" href="#projects">See my projects</a><a class="btn" href="#contact">Get in touch</a></div>
+    <div class="btns"><a class="btn main" href="#projects">See my projects</a><a class="btn" href="#cv">Download my CV</a><a class="btn" href="#contact">Get in touch</a></div>
   </div>
   <div class="term" aria-label="Interactive terminal">
     <div class="top"><span>aya@portfolio</span><span>try the buttons, or type a command</span></div>
@@ -167,6 +167,15 @@ footer{padding:2rem 0 3rem;border-top:1px solid var(--line);color:var(--muted);f
   </ul>
 </section>
 
+<section id="cv">
+  <h2>Download my CV</h2>
+  <p class="lead">Available in English and French. Pick the version you need.</p>
+  <div class="btns">
+    <a class="btn main" href="cv/Aya_BOUKNANA_CV_EN.pdf" download>CV (English)</a>
+    <a class="btn main" href="cv/Aya_BOUKNANA_CV_FR.pdf" download>CV (Français)</a>
+  </div>
+</section>
+
 <section id="contact">
   <h2>Let's talk</h2>
   <p class="lead">The quickest way to reach me is email or LinkedIn.</p>
@@ -180,10 +189,11 @@ footer{padding:2rem 0 3rem;border-top:1px solid var(--line);color:var(--muted);f
     <p>In capture-the-flag (CTF) competitions, a flag is a secret code hidden in a system, and finding it proves that access was gained. Your attention to detail reflects the mindset that security work requires. I am seeking a final-year (PFE) internship of up to 5 months starting February 2027, and I would welcome the opportunity to discuss how I can contribute to your team.</p>
     <code id="flagcode">AYA{access_granted_open_to_pfe_2027}</code>
     <div class="btns">
-      <button type="button" class="btn main" id="flagcopy">Copy flag</button>
+      <a class="btn main" href="#cv" id="flagcv">Get my CV</a>
+      <button type="button" class="btn" id="flagcopy">Copy flag</button>
       <a class="btn" href="#contact" id="flaggo">Get in touch</a>
       <button type="button" class="btn" id="flagclose">Close</button>
-    </div>
+</div>
   </dialog>
 </section>
 </main>
@@ -253,7 +263,8 @@ function pick(b,k,v){
 /* Terminal */
 const sh=t=>`<button type="button" data-c="${t}">${t}</button>`;
 const C={
- help:()=>`Commands: ${['about','projects','skills','contact','ls','clear'].map(sh).join('')}`,
+ help:()=>`Commands: ${['about','projects','skills','cv','contact','ls','clear'].map(sh).join('')}`,
+ cv:()=>`${sh('go cv')} English and French versions are available to download.`,
  about:()=>`Aya, 3rd-year cybersecurity engineering student at ENSIAS (Rabat).\nI audit applications, build honeypots and secure access tools.`,
  whoami:()=>C.about(),
  projects:()=>`1. Application security audit (ONDA)\n2. Secure access gateway (TGR)\n3. Cloud VM security analysis\n4. Honeypot lab\n5. Juice Shop YARA scanner\n6. SafeHer mobile app\n7. CTF platform (team project)\n<span class="dim">Scroll down for details.</span> ${sh('go projects')}`,
@@ -269,6 +280,7 @@ function flag(){
   return `<span class="ok">root access granted.</span>\n🚩 FLAG CAPTURED: AYA{access_granted_open_to_pfe_2027}`}
 $('#flagclose').onclick=()=>$('#flag').close();
 $('#flaggo').onclick=()=>$('#flag').close();
+$('#flagcv').onclick=()=>$('#flag').close();
 $('#flagcopy').onclick=e=>{navigator.clipboard.writeText($('#flagcode').textContent);e.target.textContent='Copied!'};
 function print(h,c){const d=document.createElement('div');d.className=c||'';d.innerHTML=h;out.append(d);out.scrollTop=out.scrollHeight}
 function run(raw){
