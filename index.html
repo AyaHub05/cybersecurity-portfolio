@@ -72,13 +72,32 @@ footer{padding:2rem 0 3rem;border-top:1px solid var(--line);color:var(--muted);f
 #flag .btn{font:600 1rem var(--sans);cursor:pointer;background:var(--panel)}
 #flag .btn.main{background:var(--ink);color:#fff}
 #flag .btn:hover{background:var(--blue);color:#fff}
+button.btn{font:600 1rem var(--sans);cursor:pointer;background:var(--panel)}
+button.btn.main{background:var(--ink);color:#fff}
+button.btn:hover{background:var(--blue);border-color:var(--blue);color:#fff}
+#cvview{width:min(980px,calc(100% - 1rem));height:min(94vh,1100px);max-height:calc(100dvh - 1rem);padding:0;border:3px solid var(--ink);border-radius:14px;background:var(--panel);color:var(--ink);box-shadow:0 30px 80px rgba(42,22,70,.5);overflow:hidden}
+#cvview[open]{display:flex;flex-direction:column}
+#cvview::backdrop{background:rgba(27,13,48,.78)}
+.cvbar{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;padding:.6rem .8rem;border-bottom:1px solid var(--line);background:var(--mist)}
+.cvbar h2{font-size:1.15rem;margin:0 auto 0 0}
+.cvbar .btn{padding:.35rem .9rem;font-size:.95rem}
+.cvtabs,.cvtools{display:flex;align-items:center;border:2px solid var(--ink);border-radius:999px;overflow:hidden}
+.cvtabs button,.cvtools button{font:600 .9rem var(--sans);padding:.25rem .8rem;border:0;background:transparent;color:var(--ink);cursor:pointer}
+.cvtabs button[aria-pressed=true]{background:var(--ink);color:#fff}
+.cvtabs button[aria-pressed=false]:hover,.cvtools button:hover{background:var(--teal)}
+.cvtools output{font:600 .85rem var(--mono);min-width:3.6rem;text-align:center}
+#cvscroll{flex:1;overflow:auto;background:#CFC3E3;padding:1rem;touch-action:pan-x pan-y;-webkit-overflow-scrolling:touch}
+#cvcanvas{display:block;margin:0 auto;background:#fff;box-shadow:0 6px 24px rgba(42,22,70,.35)}
+#cvcanvas[hidden]{display:none}
+#cvmsg{margin:2rem auto;text-align:center}
+@media(max-width:560px){.cvbar h2{flex-basis:100%}}
 @media(max-width:820px){.hero{grid-template-columns:1fr}.hero p{max-width:none}#out{height:16rem}}
 </style>
 </head>
 <body data-mode="plain">
 <header class="bar"><div class="wrap">
   <strong>Aya</strong>
-  <nav aria-label="Sections"><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#beyond">Beyond code</a><a href="#cv">CV</a>><a href="#contact">Contact</a></nav>
+  <nav aria-label="Sections"><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#beyond">Beyond code</a><a href="#cv">CV</a><a href="#contact">Contact</a></nav>
   <div class="mode" role="group" aria-label="Reading mode">
     <button type="button" data-mode="plain" aria-pressed="true">Plain English</button>
     <button type="button" data-mode="tech" aria-pressed="false">Technical</button>
@@ -91,7 +110,7 @@ footer{padding:2rem 0 3rem;border-top:1px solid var(--line);color:var(--muted);f
     <h1>Hi, I'm Aya.</h1>
     <p>I'm a cybersecurity engineering student at ENSIAS. I learn how attackers break into systems so I can help organizations stop them.</p>
     <p>Looking for a final-year (PFE) internship of up to 5 months, starting February 2027. Not sure what a term means? Switch to <b>Plain English</b> at the top, or tap any skill below.</p>
-    <div class="btns"><a class="btn main" href="#projects">See my projects</a><a class="btn" href="#cv">Download my CV</a><a class="btn" href="#contact">Get in touch</a></div>
+    <div class="btns"><a class="btn main" href="#projects">See my projects</a><a class="btn" href="#cv">View my CV</a><a class="btn" href="#contact">Get in touch</a></div>
   </div>
   <div class="term" aria-label="Interactive terminal">
     <div class="top"><span>aya@portfolio</span><span>try the buttons, or type a command</span></div>
@@ -168,13 +187,32 @@ footer{padding:2rem 0 3rem;border-top:1px solid var(--line);color:var(--muted);f
 </section>
 
 <section id="cv">
-  <h2>Download my CV</h2>
-  <p class="lead">Available in English and French. Pick the version you need.</p>
+  <h2>My CV</h2>
+  <p class="lead">View it right here, zoom in on the details, and download it if you like. Available in English and French.</p>
   <div class="btns">
-    <a class="btn main" href="cv/Aya_BOUKNANA_CV_EN.pdf" download>CV (English)</a>
-    <a class="btn main" href="cv/Aya_BOUKNANA_CV_FR.pdf" download>CV (Français)</a>
+    <button type="button" class="btn main" data-cv="en">View CV (English)</button>
+    <button type="button" class="btn main" data-cv="fr">View CV (Français)</button>
   </div>
 </section>
+
+<dialog id="cvview" aria-labelledby="cvtitle">
+  <div class="cvbar">
+    <h2 id="cvtitle">CV (English)</h2>
+    <div class="cvtabs" role="group" aria-label="CV language">
+      <button type="button" data-cv="en" aria-pressed="true">English</button>
+      <button type="button" data-cv="fr" aria-pressed="false">Français</button>
+    </div>
+    <div class="cvtools" role="group" aria-label="Zoom">
+      <button type="button" id="cvout" aria-label="Zoom out">&minus;</button>
+      <output id="cvpct" aria-live="polite">100%</output>
+      <button type="button" id="cvin" aria-label="Zoom in">+</button>
+      <button type="button" id="cvfit" aria-label="Fit to width">Fit</button>
+    </div>
+    <a class="btn main" id="cvdl" href="cv/Aya_BOUKNANA_CV_EN.pdf" download="Aya_BOUKNANA_CV_EN.pdf">Download</a>
+    <button type="button" class="btn" id="cvclose">Close</button>
+  </div>
+  <div id="cvscroll" tabindex="0" aria-label="CV preview. Use plus and minus to zoom."><canvas id="cvcanvas" role="img" aria-label="Preview of the CV"></canvas><p id="cvmsg" class="lead" hidden></p></div>
+</dialog>
 
 <section id="contact">
   <h2>Let's talk</h2>
@@ -264,7 +302,7 @@ function pick(b,k,v){
 const sh=t=>`<button type="button" data-c="${t}">${t}</button>`;
 const C={
  help:()=>`Commands: ${['about','projects','skills','cv','contact','ls','clear'].map(sh).join('')}`,
- cv:()=>`${sh('go cv')} English and French versions are available to download.`,
+ cv:()=>`${sh('go cv')} English and French versions are available to view and download.`,
  about:()=>`Aya, 3rd-year cybersecurity engineering student at ENSIAS (Rabat).\nI audit applications, build honeypots and secure access tools.`,
  whoami:()=>C.about(),
  projects:()=>`1. Application security audit (ONDA)\n2. Secure access gateway (TGR)\n3. Cloud VM security analysis\n4. Honeypot lab\n5. Juice Shop YARA scanner\n6. SafeHer mobile app\n7. CTF platform (team project)\n<span class="dim">Scroll down for details.</span> ${sh('go projects')}`,
@@ -295,6 +333,80 @@ $('#f').onsubmit=e=>{e.preventDefault();run(inp.value);inp.value=''};
 const hints=['Look around first: type ls to list the files.','There is a file called flag.txt. Try to read it with cat flag.txt.','Access denied? Admins run commands with sudo. What would you want to do with Aya?'];
 let h=0;
 $('#flaghint').onclick=()=>{print(`<span class="p">$</span> hint`);print(hints[Math.min(h++,hints.length-1)],'dim')};
+
+/* CV viewer (PDF.js is loaded on first use) */
+const CV={en:{url:'cv/Aya_BOUKNANA_CV_EN.pdf',name:'Aya_BOUKNANA_CV_EN.pdf',label:'CV (English)'},fr:{url:'cv/Aya_BOUKNANA_CV_FR.pdf',name:'Aya_BOUKNANA_CV_FR.pdf',label:'CV (Français)'}};
+const PDFJS='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/';
+const cvd=$('#cvview'), cvs=$('#cvscroll'), cvc=$('#cvcanvas'), cvm=$('#cvmsg');
+let cvLang='en', cvZoom=1, cvPage=null, cvTask=null, pdfReady=null; const cvDocs={};
+function loadPdfjs(){
+  return pdfReady||(pdfReady=new Promise((ok,ko)=>{
+    if(window.pdfjsLib)return ok(window.pdfjsLib);
+    const sc=document.createElement('script');sc.src=PDFJS+'pdf.min.js';
+    sc.onload=()=>{pdfjsLib.GlobalWorkerOptions.workerSrc=PDFJS+'pdf.worker.min.js';ok(pdfjsLib)};
+    sc.onerror=()=>{pdfReady=null;ko(new Error('pdfjs'))};
+    document.head.append(sc);
+  }));
+}
+async function cvShow(lang){
+  cvLang=lang;const d=CV[lang];
+  $('#cvtitle').textContent=d.label;
+  $('#cvdl').href=d.url;$('#cvdl').setAttribute('download',d.name);
+  document.querySelectorAll('.cvtabs button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.cv===lang));
+  cvm.hidden=true;cvc.hidden=false;
+  try{
+    const lib=await loadPdfjs();
+    const doc=cvDocs[lang]||(cvDocs[lang]=await lib.getDocument(d.url).promise);
+    if(cvLang!==lang)return;
+    cvPage=await doc.getPage(1);
+    cvZoom=1;cvRender(false);
+  }catch(e){
+    cvPage=null;cvc.hidden=true;cvm.hidden=false;
+    cvm.innerHTML=`The preview could not load. <a href="${d.url}" target="_blank" rel="noopener">Open the PDF</a> or use the Download button.`;
+  }
+}
+function cvRender(keep){
+  if(!cvPage)return;
+  const cs=getComputedStyle(cvs),pad=parseFloat(cs.paddingLeft)+parseFloat(cs.paddingRight);
+  const base=cvPage.getViewport({scale:1});
+  const scale=Math.max(120,cvs.clientWidth-pad)/base.width*cvZoom;
+  const vp=cvPage.getViewport({scale});
+  let r=Math.min(window.devicePixelRatio||1,2.5);
+  r=Math.min(r,Math.sqrt(16e6/(vp.width*vp.height)));
+  const vpr=cvPage.getViewport({scale:scale*r});
+  const cx=(cvs.scrollLeft+cvs.clientWidth/2)/(cvs.scrollWidth||1),cy=(cvs.scrollTop+cvs.clientHeight/2)/(cvs.scrollHeight||1);
+  const tmp=document.createElement('canvas');tmp.width=Math.floor(vpr.width);tmp.height=Math.floor(vpr.height);
+  if(cvTask)cvTask.cancel();
+  const task=cvTask=cvPage.render({canvasContext:tmp.getContext('2d'),viewport:vpr});
+  $('#cvpct').textContent=Math.round(cvZoom*100)+'%';
+  task.promise.then(()=>{
+    cvc.width=tmp.width;cvc.height=tmp.height;
+    cvc.style.width=vp.width+'px';cvc.style.height=vp.height+'px';
+    cvc.getContext('2d').drawImage(tmp,0,0);
+    if(keep){cvs.scrollLeft=cx*cvs.scrollWidth-cvs.clientWidth/2;cvs.scrollTop=cy*cvs.scrollHeight-cvs.clientHeight/2}
+    else{cvs.scrollLeft=0;cvs.scrollTop=0}
+  }).catch(()=>{});
+}
+function cvSet(z){cvZoom=Math.min(4,Math.max(.5,z));cvRender(true)}
+document.querySelectorAll('#cv [data-cv]').forEach(b=>b.onclick=()=>{cvd.showModal();cvShow(b.dataset.cv)});
+document.querySelectorAll('.cvtabs button').forEach(b=>b.onclick=()=>cvShow(b.dataset.cv));
+$('#cvin').onclick=()=>cvSet(cvZoom*1.25);
+$('#cvout').onclick=()=>cvSet(cvZoom/1.25);
+$('#cvfit').onclick=()=>{cvZoom=1;cvRender(false)};
+$('#cvclose').onclick=()=>cvd.close();
+cvd.addEventListener('click',e=>{if(e.target===cvd)cvd.close()});
+cvd.addEventListener('keydown',e=>{
+  if(e.key==='+'||e.key==='='){e.preventDefault();cvSet(cvZoom*1.25)}
+  else if(e.key==='-'){e.preventDefault();cvSet(cvZoom/1.25)}
+  else if(e.key==='0'){e.preventDefault();cvZoom=1;cvRender(false)}
+});
+cvs.addEventListener('wheel',e=>{if(e.ctrlKey||e.metaKey){e.preventDefault();cvSet(cvZoom*(e.deltaY<0?1.1:1/1.1))}},{passive:false});
+let pd=0,pz=1,raf=0;
+const dist=t=>Math.hypot(t[0].clientX-t[1].clientX,t[0].clientY-t[1].clientY);
+cvs.addEventListener('touchstart',e=>{if(e.touches.length===2){pd=dist(e.touches);pz=cvZoom}},{passive:true});
+cvs.addEventListener('touchmove',e=>{if(e.touches.length===2&&pd){e.preventDefault();const z=pz*dist(e.touches)/pd;if(!raf)raf=requestAnimationFrame(()=>{raf=0;cvSet(z)})}},{passive:false});
+cvs.addEventListener('touchend',()=>{pd=0});
+let rt;addEventListener('resize',()=>{if(cvd.open){clearTimeout(rt);rt=setTimeout(()=>cvRender(true),150)}});
 
 /* One orchestrated moment: the intro types itself */
 const intro=[['whoami',C.about()],['ls projects/','ONDA-audit  TGR-bastion  Cloud-VM  Honeypot  Juice-Shop  SafeHer  CTF'],['help',C.help()]];
