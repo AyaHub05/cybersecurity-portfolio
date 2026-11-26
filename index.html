@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Aya | Cybersecurity Engineering Student</title>
-<meta name="description" content="Portfolio of Aya, cybersecurity engineering student at ENSIAS: application security, honeypots, secure access and intrusion detection.">
+<meta name="description" content="Portfolio of Aya, cybersecurity engineering student at ENSIAS: application security, honeypots, security monitoring (Blue Team) and intrusion detection.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -51,6 +51,7 @@ h2{font-size:1.9rem;line-height:1.15;margin:0 0 .4rem;letter-spacing:-.01em}
 .card{background:var(--panel);border:1px solid var(--line);border-left:6px solid var(--blue);border-radius:6px;padding:1.1rem 1.2rem;transition:opacity .2s}
 .card h3{margin:0 0 .35rem;font-size:1.2rem}
 .card p{margin:.2rem 0 .6rem}
+.card h3 small{font:600 .75rem var(--mono);color:var(--blue);white-space:nowrap}
 .card .tools{font:400 .8rem var(--mono);color:var(--muted);margin:0}
 .card.dim{opacity:.3}
 .card.hit{border-left-color:var(--amber);box-shadow:0 0 0 2px var(--amber)}
@@ -122,9 +123,9 @@ button.btn:hover{background:var(--blue);border-color:var(--blue);color:#fff}
 
 <section id="projects">
   <h2>Projects</h2>
-  <p class="lead">Internships and hands-on projects, from airport application security to honeypots and intrusion detection. Each one shows a different side of security.</p>
+  <p class="lead">Internships and hands-on projects, from airport application security to honeypots, intrusion detection and security monitoring. Each one shows a different side of security.</p>
   <div class="grid">
-    <article class="card" data-skills="SAST/DAST,OWASP Top 10,Threat modeling,SonarQube,Burp Suite,OWASP ZAP">
+    <article class="card" data-skills="SAST/DAST,OWASP Top 10,Threat modeling,SonarQube,Burp Suite,OWASP ZAP,PHPStan,Semgrep,PHP">
       <h3>Application security internship at ONDA</h3>
       <p class="plain">At Morocco's airports authority (July to August 2026), I checked the web application behind the airport's Security Management System for weaknesses, on a safe test copy, and told the team which to fix first.</p>
       <p class="tech">Audited a PHP/MariaDB web application: STRIDE threat modeling, SAST (PHPStan, SonarQube, Semgrep), DAST (Burp Suite, OWASP ZAP), manual validation of findings, OWASP Top 10 risk prioritization and remediation recommendations. Tested on an isolated sandbox with fictitious data.</p>
@@ -136,13 +137,19 @@ button.btn:hover{background:var(--blue);border-color:var(--blue);color:#fff}
       <p class="tech">Benchmarked PAM solutions, deployed Apache Guacamole as a secure administration bastion, and wrote MyBastion, an internal Bash tool: SSH bastion with password + TOTP authentication, role-based menus, ACL checks, replayable session recordings and audit logs.</p>
       <p class="tools">PAM · Apache Guacamole · Bash</p>
     </article>
-    <article class="card" data-skills="Random Forest">
+    <article class="card" data-skills="SOC and Blue Team">
+      <h3>Open-source SOC: Blue Team &amp; monitoring <small>(in progress)</small></h3>
+      <p class="plain">My current project: comparing free, open-source tools that watch an organization's systems for signs of an attack, the way a security operations center (SOC) does. It looks at how well each one monitors, collects logs in one place and spots threats.</p>
+      <p class="tech">Ongoing comparative study of open-source SOC solutions covering security monitoring, centralized log management and threat detection (Blue Team).</p>
+      <p class="tools">SOC · Blue Team · Monitoring</p>
+    </article>
+    <article class="card" data-skills="Random Forest,Intrusion detection">
       <h3>Cloud VM security analysis</h3>
       <p class="plain">I simulated attacks against virtual machines in the cloud and trained a model on a public dataset to recognize intrusions automatically.</p>
       <p class="tech">Simulated attacks on cloud VMs, then trained and evaluated a Random Forest on the CICIDS2017 dataset (precision, recall, F1) for intrusion detection. Wazuh/Kibana integration designed as a next step.</p>
       <p class="tools">Random Forest · CICIDS2017</p>
     </article>
-    <article class="card" data-skills="Honeypots,ELK Stack,VirtualBox,Kali Linux">
+    <article class="card" data-skills="Honeypots,ELK Stack,VirtualBox,Kali Linux,Nmap">
       <h3>Honeypot lab</h3>
       <p class="plain">I built decoy systems that look like real, vulnerable servers. When simulated attackers try to break in, they record what the attackers do, and I study it in a dashboard.</p>
       <p class="tech">Deployed Cowrie and Dionaea honeypots on an isolated virtual network (honeypot, Kali attacker and ELK supervision VMs), simulated attacks with Nmap, Hydra and Metasploit, and analyzed the logs in Kibana with GeoIP enrichment.</p>
@@ -181,8 +188,8 @@ button.btn:hover{background:var(--blue);border-color:var(--blue);color:#fff}
   <ul class="list">
     <li><b>INSEC, ENSIAS cybersecurity club</b>Contact Manager and conference lead: I organize workshops, talks and events for students.</li>
     <li><b>Moroccan Cyber Security Camp, 12th edition</b>Led international professional relations for the event.</li>
-    <li><b>CCNA certifications</b>Two Cisco networking certifications (Introduction to Networks; Switching, Routing and Wireless Essentials).</li>
-    <li><b>ENSIAS, Rabat</b>Engineering cycle in Cybersecurity, Cloud &amp; Mobile Computing, 2024 to 2027. Languages: Arabic, French, English, Spanish (basic).</li>
+    <li><b>Cisco certifications</b>Three CCNA certifications (Introduction to Networks; Switching, Routing and Wireless Essentials; Enterprise Networking, Security, and Automation). I am now preparing the Cisco CyberOps Associate certification, which focuses on security operations.</li>
+    <li><b>ENSIAS, Rabat</b>Engineering cycle in Cybersecurity, Cloud &amp; Mobile Computing, 2024 to 2027. Languages: Arabic (native), French (fluent), English (fluent), Spanish (basic).</li>
   </ul>
 </section>
 
@@ -249,33 +256,49 @@ document.querySelectorAll('.mode button').forEach(b=>b.onclick=()=>{
 
 /* Skills: name -> plain meaning */
 const SK={
- 'Security tools':{
+ 'Application security':{
   'Pentesting':'Legally attacking a system to find weaknesses before real attackers do.',
-  'Burp Suite':'A tool that inspects and tests the security of web applications.',
-  'OWASP ZAP':'A free scanner that automatically looks for weaknesses in websites.',
-  'Nmap':'Maps a network and shows which services are exposed.',
-  'Wireshark':'Lets you see network traffic to investigate what is going on.',
+  'Threat modeling':'Thinking through how an attacker could target a system (STRIDE, MITRE ATT&CK).',
+  'MITRE ATT&CK':'A public catalog of the tactics real attackers use, handy for planning defenses.',
   'SAST/DAST':'Two ways to test an app: reading its code (SAST) or attacking it while it runs (DAST).',
   'OWASP Top 10':'The industry list of the ten most common web security risks.',
+  'Burp Suite':'A tool that inspects and tests the security of web applications.',
+  'OWASP ZAP':'A free scanner that automatically looks for weaknesses in websites.',
+  'SonarQube':'Scans source code for bugs and security weaknesses.',
+  'PHPStan':'Analyzes PHP code to spot bugs before the program even runs.',
+  'Semgrep':'Searches source code for risky patterns, like a security-focused find tool.'},
+ 'Network and Blue Team':{
+  'SOC and Blue Team':'A SOC (security operations center) is a team that watches systems around the clock to detect and respond to attacks. The Blue Team is the defending side.',
+  'ELK Stack':'A set of tools to collect, search and visualize huge volumes of logs.',
   'YARA':'Rules that detect suspicious or malicious files by their patterns.',
-  'Threat modeling':'Thinking through how an attacker could target a system (STRIDE, MITRE ATT&CK).',
   'Honeypots':'A decoy system that attracts attackers so defenders can study how they work.',
-  'Bastion host':'A single, hardened entry point for reaching sensitive servers.'},
- 'Code and data':{
-  'CI/CD':'An automatic pipeline that tests and ships code, here with security checks built in.',
-  'Random Forest':'A machine-learning method, used here to detect intrusions.',
+  'Intrusion detection':'Spotting that someone is breaking into a system, by analyzing traffic or logs.',
+  'Wireshark':'Lets you see network traffic to investigate what is going on.',
+  'Nmap':'Maps a network and shows which services are exposed.',
+  'Bastion host':'A single, hardened entry point for reaching sensitive servers.',
+  'CCNA networking':"Cisco-certified knowledge of how networks are built, secured and run."},
+ 'Programming and scripting':{
   'Python':'A popular programming language, used here for automation and data analysis.',
   'Bash':'Command-line scripting for automating tasks on servers.',
-  'ELK Stack':'A set of tools to collect, search and visualize huge volumes of logs.',
-  'SonarQube':'Scans source code for bugs and security weaknesses.'},
- 'Systems and cloud':{
-  'Android':'Mobile app development for Android phones.',
-  'Firebase':"Google's backend for apps: login, database and access rules.",
+  'Java':'A widely used programming language for business software and Android apps.',
+  'C':'A low-level language close to the machine, used for systems and performance.',
+  'PHP':'A language used to build web applications, like the one I audited at ONDA.',
+  'SQL':'The language used to query and manage databases.'},
+ 'Cloud and data':{
+  'AWS':"Amazon's cloud platform for renting servers and services. I work with VPC (private networks), IAM (access rights), EC2 (virtual servers), ALB (load balancing), Auto Scaling and CloudWatch (monitoring).",
+  'Random Forest':'A machine-learning method, used here to detect intrusions.',
+  'Scikit-Learn and NumPy':'Python libraries for machine learning and numerical computing.',
+  'Oracle 19c':'A professional database system used by many large organizations.'},
+ 'Design and development':{
+  'CI/CD':'An automatic pipeline that tests and ships code, here with security checks built in.',
+  'Git':'Tracks every change to code so teams can work on it together safely.',
+  'UML and Merise':'Diagram methods used to design software and databases before building them.'},
+ 'Systems and labs':{
   'Kali Linux':'A Linux system packed with security-testing tools.',
-  'AWS':"Amazon's cloud platform for renting servers and services.",
-  'Docker':'Packages software so it runs the same way on any machine.',
   'VirtualBox':'Runs virtual computers inside a real one, ideal for safe lab setups.',
-  'CCNA networking':"Cisco-certified knowledge of how networks are built and run."}
+  'Docker':'Packages software so it runs the same way on any machine.',
+  'Android':'Mobile app development for Android phones.',
+  'Firebase':"Google's backend for apps: login, database and access rules."}
 };
 const grid=$('#skillgrid'), info=$('#skillinfo'), cards=[...document.querySelectorAll('.card')];
 for(const [g,items] of Object.entries(SK)){
@@ -305,8 +328,8 @@ const C={
  cv:()=>`${sh('go cv')} English and French versions are available to view and download.`,
  about:()=>`Aya, 3rd-year cybersecurity engineering student at ENSIAS (Rabat).\nI audit applications, build honeypots and secure access tools.`,
  whoami:()=>C.about(),
- projects:()=>`1. Application security audit (ONDA)\n2. Secure access gateway (TGR)\n3. Cloud VM security analysis\n4. Honeypot lab\n5. Juice Shop YARA scanner\n6. SafeHer mobile app\n7. CTF platform (team project)\n<span class="dim">Scroll down for details.</span> ${sh('go projects')}`,
- skills:()=>`Burp, ZAP, SAST/DAST, ELK, Python, Bash, AWS, Docker, CCNA...\n${sh('go skills')}`,
+ projects:()=>`1. Application security audit (ONDA)\n2. Secure access gateway (TGR)\n3. Open-source SOC study (in progress)\n4. Cloud VM security analysis\n5. Honeypot lab\n6. Juice Shop YARA scanner\n7. SafeHer mobile app\n8. CTF platform (team project)\n<span class="dim">Scroll down for details.</span> ${sh('go projects')}`,
+ skills:()=>`Burp, ZAP, SAST/DAST, ELK, SOC/Blue Team, Python, Bash, AWS, CCNA...\n${sh('go skills')}`,
  contact:()=>`${sh('go contact')} Email, LinkedIn and GitHub are below.`,
  ls:()=>`about.txt  projects/  skills/  contact.txt  flag.txt`,
  'cat flag.txt':()=>`Permission denied. Only root can read this file.`,
@@ -409,7 +432,7 @@ cvs.addEventListener('touchend',()=>{pd=0});
 let rt;addEventListener('resize',()=>{if(cvd.open){clearTimeout(rt);rt=setTimeout(()=>cvRender(true),150)}});
 
 /* One orchestrated moment: the intro types itself */
-const intro=[['whoami',C.about()],['ls projects/','ONDA-audit  TGR-bastion  Cloud-VM  Honeypot  Juice-Shop  SafeHer  CTF'],['help',C.help()]];
+const intro=[['whoami',C.about()],['ls projects/','ONDA-audit  TGR-bastion  SOC-study  Cloud-VM  Honeypot  Juice-Shop  SafeHer  CTF'],['help',C.help()]];
 let i=0;
 (function next(){
   if(i>=intro.length)return;
